@@ -15,9 +15,9 @@ const Example = (props) => {
   const [ usuarios , setUsuarios] = useState([]);
 
   useEffect(() => {
-    async function enviarEmail(email){
+    async function enviarNome(nome){
      
-      const responde = await api.post('http://localhost:5000/send' + email)
+      const responde = await api.post('http://localhost:5000/send' + nome)
     }
   },[])
 
@@ -90,6 +90,7 @@ const Example = (props) => {
       .split(",")
       .filter(item => !!item);
 
+    enviarNome(newNames);
     setNames(newNames);
   };
 
@@ -129,7 +130,7 @@ const Example = (props) => {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                               >
                                 <td># </td>
-                                <td component="th" scope="row" >
+                                <td component="th" scope="row"  value={row.nome_usuario} onChange={e => buildNewNames(e.target.value)}>
                                   {row.nome_usuario}
                                 </td>
                                 <td align="center" > 
@@ -147,7 +148,7 @@ const Example = (props) => {
                       Sortear
                     </button>
                     {usuarios.map((row) => (  
-                      <button className="ml-2 btn btn-outline-secondary"   onClick={() => enviarEmail(row.nome_usuario , row.email_usuario)}>
+                      <button className="ml-2 btn btn-outline-secondary"   onClick={startRandomize}>
                         Enviar Email
                       </button>
                     ))}         
