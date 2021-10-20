@@ -1,6 +1,6 @@
 // usar " NPM RUN DEV " para rodar o projeto
 
-//     dependecidas 
+//     dependencias 
 
   //axios
   //express
