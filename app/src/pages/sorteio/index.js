@@ -14,12 +14,6 @@ const Example = (props) => {
 
   const [ usuarios , setUsuarios] = useState([]);
 
-  useEffect(() => {
-    async function enviarNome(nome){
-     
-      const responde = await api.post('http://localhost:5000/send' + nome)
-    }
-  },[])
 
   useEffect(() => {
     
@@ -90,7 +84,6 @@ const Example = (props) => {
       .split(",")
       .filter(item => !!item);
 
-    enviarNome(newNames);
     setNames(newNames);
   };
 
@@ -110,48 +103,38 @@ const Example = (props) => {
                   <h1 className={`display-1`}>{name}</h1>
                 </div>
                 <div className="container-fluid">
-                
-                
+                  
                     <div className="row mt-2">
                       <div className="col-6 col-lg-4 m-auto">
-                      <Table>
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>Nome</th>
-                              <th>Email</th>
+                        
+                         <label htmlFor="names"></label>
 
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {usuarios.map((row) => (    
-                              <tr
-                                key={row._id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                              >
-                                <td># </td>
-                                <td component="th" scope="row"  value={row.nome_usuario} onChange={e => buildNewNames(e.target.value)}>
-                                  {row.nome_usuario}
-                                </td>
-                                <td align="center" > 
-                                  { row.email_usuario } 
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                      </Table>
+
+                         {usuarios.map((row) => (  
+                           
+                          <textarea
+                            placeholder="Adicionar os nomes aqui..."
+                            id="names"
+                            value={row.nome_usuario}
+                            style={{ minHeight: "20vh", resize: "x" }}
+                            className="form-control"
+                            onChange={e => buildNewNames(e.target.value)}
+                          >  </textarea>
+                        ))}
+
+
                       </div>
-                    </div>  
-               
+                    </div>
+                  
                   <div className="text-center mt-2">
                     <button className="btn btn-secondary" onClick={startRandomize}>
                       Sortear
                     </button>
-                    {usuarios.map((row) => (  
-                      <button className="ml-2 btn btn-outline-secondary"   onClick={startRandomize}>
+                    
+                      <button className="ml-2 btn btn-outline-secondary"   >
                         Enviar Email
                       </button>
-                    ))}         
+                      
                   </div>
                 </div>
               </div>
@@ -165,3 +148,9 @@ const Example = (props) => {
 
 export default Example;
    
+                            
+                            
+                            
+                            
+                
+               

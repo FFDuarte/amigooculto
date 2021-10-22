@@ -6,27 +6,7 @@ const Usuario = require('./controllers/usuarios.controllers');
 const user = "fabricio@ffduarte.com";
 const pass = "Fa157953@";
 
-routes.get('/email'+email+nome,( req , res) ){
 
-    const transporter = nodemailer.createTransport({
-        host: "smtp.umbler.com" ,
-        port: 587 ,
-        pass: {user , pass},
-        subject: "Nome da pessoa",
-        text: {nome}
-    })
-
-    transporter.sendMail({
-        from: user,
-        to: email,
-
-    }).then(info => {
-        res.send(info)
-    }).catch(error => {
-        res.send(error)
-    })
-
-}
 
 
 routes.get('/', Usuario.index);

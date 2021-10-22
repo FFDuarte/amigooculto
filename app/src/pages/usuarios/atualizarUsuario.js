@@ -1,5 +1,5 @@
-import React , { useState, useEffect} from 'react';
-import { Table , ButtonGroup , Button} from 'reactstrap';
+import React , { useState, useEffect , useParams} from 'react';
+import { Table , ButtonGroup , Button , Input , FormGroup , Form , Label} from 'reactstrap';
 import api from '../../services/api';
 import {  Row, Col } from 'reactstrap';
 import SideBar from '../../components/sidebar';
@@ -9,7 +9,7 @@ const style = {
 }
 
 
-const mdTheme = createTheme();
+
 
 function AtualizarUsuario() {
 
@@ -71,5 +71,5 @@ useEffect(() => {
   );
 }
 
-export default Example;
+export default AtualizarUsuario;
    

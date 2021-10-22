@@ -5,7 +5,7 @@ import { BrowserRouter ,Switch , Route } from 'react-router-dom';
 
 //  ADMIN
 import Usuarios from './pages/usuarios';
-import Editar from './pages/usuarios/editarUsuario';
+import Editar from './pages/usuarios/atualizarUsuario';
 import Cadastrar from './pages/usuarios/novoUsuario';
 import Sorteio  from './pages/sorteio';
 
