@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -22,7 +21,6 @@ mongoose.connect('mongodb://localhost/amigosecreto', {
 
 //quais dominios poder usar 
 app.use(cors());
-app.use(cookieParser());
 app.use(express.json());
 
 app.use(routes);
