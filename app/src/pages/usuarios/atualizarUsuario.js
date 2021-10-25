@@ -22,11 +22,9 @@ const {idUsuario} = useParams();
 
 useEffect(() => {
   async function getUsuario(){
-    var response = await api.get('http://localhost:5000/api/usuarios.details/' + idUsuario);
+    var response = await api.get('http://localhost:5000/api/usuarios.pesquisar/' + idUsuario);
     setNome(response.data.nome_usuario);
     setEmail(response.data.email_usuario);
-    setSenha(response.data.senha_usuario);
-    setTipo(response.data.tipo_usuario);
   }
  getUsuario();
 },[])
@@ -35,8 +33,6 @@ useEffect(() => {
     const data  = {
       nome_usuario:nome, 
       email_usuario:email, 
-      senha_usuario:senha, 
-      tipo_usuario:tipo,
       _id:idUsuario}
 
       const response = await api.put('http://localhost:5000/api/usuarios' , data);

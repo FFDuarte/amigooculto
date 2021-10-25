@@ -16,7 +16,7 @@ export default function Routes(){
             <Switch>
                 {/*Rotas CLiente */}
                 <Route path="/" exact component={Usuarios} />
-                <Route path="/usuarios/editar" exact component={Editar} />
+                <Route path="/usuarios/editar:idUsuario" exact component={Editar} />
                 <Route path="/usuarios/cadastrar" exact component={Cadastrar} />
                 <Route path="/sorteio" exact component={Sorteio} />
         

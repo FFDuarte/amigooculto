@@ -1,7 +1,7 @@
 import React , { useState, useEffect} from 'react';
 import { Table } from 'reactstrap';
 import api from '../../services/api';
-import {  Row, Col ,   } from 'reactstrap';
+import {  Row, Col , ButtonGroup , Button   } from 'reactstrap';
 import SideBar from '../../components/sidebar';
 import "./index.css";
 
@@ -96,33 +96,51 @@ const Example = (props) => {
           </Col>
           <Col style={style}>
               <div
-                className={`text-center d-flex flex-column align-items-center justify-content-center ${isFinal && " text-white"}`}
-                style={{  backgroundColor: `${isFinal ? "#0644A0" : "white"}` }}
+                className={`text-center d-flex flex-column align-items-center justify-content-center ` }
+    
               >
                 <div>
                   <h1 className={`display-1`}>{name}</h1>
                 </div>
                 <div className="container-fluid">
-                  
+                <Table>
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nome</th>
+                          <th>Email</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {usuarios.map((row) => (
+                                        
+                                        <tr
+                                          key={row._id}
+                                          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                        >
+                                          <td># </td>
+                                          <td component="th" scope="row">
+                                            {row.nome_usuario}
+                                          </td>
+                                          <td align="center"> { row.email_usuario } </td>
+                                         
+                                        </tr>
+                                      ))}
+                      </tbody>
+                  </Table>
                     <div className="row mt-2">
-                      <div className="col-6 col-lg-4 m-auto">
-                        
-                         <label htmlFor="names"></label>
-
-
-                         {usuarios.map((row) => (  
-                           
-                          <textarea
-                            placeholder="Adicionar os nomes aqui..."
-                            id="names"
-                            value={row.nome_usuario}
-                            style={{ minHeight: "20vh", resize: "x" }}
-                            className="form-control"
-                            onChange={e => buildNewNames(e.target.value)}
-                          >  </textarea>
-                        ))}
-
-
+                      <div className="col-4 col-lg-4 m-auto">
+                          <h4> Insira os nomes para sortear </h4>
+                                <textarea
+                                  placeholder="Adicionar os nomes aqui..."
+                                  id="names"
+                                  value={originalNames}
+                                  style={{ minHeight: "20vh", width: "250px" , marginLeft: 65}}
+                                  className="form-control"
+                                  onChange={e => buildNewNames(e.target.value)}
+                                ></textarea>
+                            
                       </div>
                     </div>
                   
